@@ -1,6 +1,7 @@
 package jm.task.core.jdbc.service;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 
@@ -9,8 +10,10 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class UserServiceImpl implements UserService {
+
     private static final Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
-    private UserDao userFunc = new UserDaoJDBCImpl();
+
+    private UserDao userFunc = new UserDaoHibernateImpl();
 
     public UserServiceImpl() throws SQLException {
 
@@ -44,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     public void cleanUsersTable() {
         userFunc.cleanUsersTable();
-        logger.info("Очистка таблици успех !");
+        logger.info("Очистка таблици успех !!!");
     }
 }
 
