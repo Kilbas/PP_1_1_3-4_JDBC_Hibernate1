@@ -28,7 +28,6 @@ public class Main {
         userService.cleanUsersTable();      // Удаление всех юзеров
         userService.dropUsersTable();// Удаление таблицы
         Util.getSessionFactory().close();
-
     }
 
     // реализуйте алгоритм здесь
