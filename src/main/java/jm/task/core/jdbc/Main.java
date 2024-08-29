@@ -4,17 +4,16 @@ import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
+
         UserServiceImpl userService = new UserServiceImpl();
 
-
         userService.createUsersTable();
-
-
         userService.saveUser("Name1", "lastName1", (byte) 10);
         userService.saveUser("Name2", "lastName1", (byte) 20);
         userService.saveUser("Name3", "lastName3", (byte) 30);
@@ -27,7 +26,8 @@ public class Main {
             System.out.println(user.getName() + " " + user.getLastName() + " - " + user.getAge() + " лет");
         }
         userService.cleanUsersTable();      // Удаление всех юзеров
-        userService.dropUsersTable();       // Удаление таблицы
+        userService.dropUsersTable();// Удаление таблицы
+        Util.getSessionFactory().close();
     }
 
     // реализуйте алгоритм здесь
